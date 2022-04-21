@@ -8,14 +8,34 @@ namespace Tests
     {
         [SetUp]
         public void Setup()
-        {
-            // Insertá tu código de inicialización aquí
+        {   
         }
 
         [Test]
-        public void Test1() // Cambiá el nombre para indicar qué estás probando
+        public void ValidId() 
         {
-            // Insertá tu código  de pruebaaquí
+            Person validId = new Person("John Doe", "5.274.086-0");
+            string expected = "5.274.086-0";
+            Assert.AreEqual(expected, validId.ID);
+        }
+        [Test]
+        public void InvalidId() 
+        {
+            Person invalidId = new Person("John Doe", "5.274.086-8");
+            Assert.IsNull(invalidId.ID);
+        }
+        [Test]
+        public void InvalidName() 
+        {
+            Person invalidName = new Person("", "5.274.086-0");
+            Assert.IsNull(invalidName.Name);
+        }
+        [Test]
+        public void ValidName() 
+        {
+            Person validName = new Person("John Doe", "5.274.086-0");
+            string expected = "John Doe";
+            Assert.AreEqual(expected, validName.Name);
         }
     }
 }
